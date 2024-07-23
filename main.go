@@ -30,5 +30,5 @@ func main() {
 	lister := property.NewLister(repository)
 
 	httpServer := server.New(importer, lister)
-	httpServer.Run(":8080")
+	httpServer.Run(os.Getenv("SERVER_LISTEN_ADDR"))
 }

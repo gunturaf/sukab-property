@@ -9,6 +9,7 @@ The name Sukab is taken from the fictional character made by [famous Indonesian 
 3. Create (or use existing) database, then import table schema for the database in the directory `db_schema`.
 4. Set env vars on the terminal, this is an example to set env vars, feel free to modify:
    ```
+   export SERVER_LISTEN_ADDR=:8080
    export DB_HOST=localhost 
    export DB_PORT=5432
    export DB_USERNAME=sukab 
@@ -22,11 +23,12 @@ The name Sukab is taken from the fictional character made by [famous Indonesian 
 ### On Linux / MacOS
 
 1. Make sure you have Go toolchain installed.
-2. Run `go build -o server-app .`, a executable named `server-app` will be created.
+2. Run `go build -o server-app .`, an executable named `server-app` will be created.
 3. Run PostgreSQL server, a minimum version of 14 is required.
 4. Create (or use existing) database, then import table schema for the database in the directory `db_schema`.
 5. Set env vars on the terminal, this is an example to set env vars, feel free to modify:
    ```
+   export SERVER_LISTEN_ADDR=:8080
    export DB_HOST=localhost 
    export DB_PORT=5432
    export DB_USERNAME=sukab 
@@ -38,7 +40,7 @@ The name Sukab is taken from the fictional character made by [famous Indonesian 
 ### On Windows
 
 1. Make sure you have Go toolchain installed.
-2. Run `go build -o server-app.exe .`, a executable named `server-app.exe` will be created.
+2. Run `go build -o server-app.exe .`, an executable named `server-app.exe` will be created.
 3. Run PostgreSQL server, a minimum version of 14 is required.
 4. Create (or use existing) database, then import table schema for the database in the directory `db_schema`.
 5. Set env vars on the terminal, refer to the one on Linux above.
@@ -49,6 +51,7 @@ The name Sukab is taken from the fictional character made by [famous Indonesian 
 
 | Key | Description | Default Value |
 |-----|-------------|---------------|
+| `SERVER_LISTEN_ADDR` | host:port which the HTTP should listen to. | <empty-string> |
 | `DB_HOST` | Host for the database, e.g.: "localhost" | <empty-string> |
 | `DB_PORT` | Port for the database, e.g.: "5432" | <empty-string> |
 | `DB_USERNAME` | Username for the database, e.g.: "postgres" | <empty-string> |
