@@ -5,7 +5,17 @@ The name Sukab is taken from the fictional character made by [famous Indonesian 
 ## How to Run (development mode)
 
 1. Download and Install Go https://go.dev/dl/ (alternatively, there's also Homebrew for that https://formulae.brew.sh/formula/go)
-2. Run `go run main.go`
+2. Run PostgreSQL server, a minimum version of 14 is required.
+3. Create (or use existing) database, then import table schema for the database in the directory `db_schema`.
+4. Set env vars on the terminal, this is an example to set env vars, feel free to modify:
+   ```
+   export DB_HOST=localhost 
+   export DB_PORT=5432
+   export DB_USERNAME=sukab 
+   export DB_PASSWORD=<redacted>
+   export DB_NAME=sukab_property
+   ```
+5. Run `go run main.go`
 
 ## How to Run (production mode)
 
