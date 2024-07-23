@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-bookworm
+    restart: always
+    networks:
+      - db
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 5
+
+  httpserv:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    build: .
+    restart: always
+    networks:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SERVER_LISTEN_ADDR: ":8080"
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: "postgres"
+
+networks:
+  db:
+    driver: bridge

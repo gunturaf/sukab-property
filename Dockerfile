@@ -1,14 +1,12 @@
-FROM golang:1 AS compile
+FROM golang:1-bullseye AS compile
 
 WORKDIR /app/
 
 COPY . .
 
-RUN go build -o server-app .
+RUN CGO_ENABLED=0 go build -o server-app .
 
 FROM gcr.io/distroless/static:nonroot
-
-WORKDIR /app/
 
 COPY --from=compile /app/server-app .
 
