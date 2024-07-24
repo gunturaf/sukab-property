@@ -92,7 +92,7 @@ func (he *httpErr) Error() string {
 }
 
 func setJSONHeader(w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json;charset=utf-8")
 }
 
 func (srv *Server) respondSuccess(w http.ResponseWriter, data any) {
