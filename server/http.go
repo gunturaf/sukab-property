@@ -51,8 +51,8 @@ func (h *Server) Run(addr string) {
 		Handler: h.mux,
 		// the following attrs are as the best practice
 		// for Go http server, based on this article: https://bruinsslot.jp/post/go-secure-webserver/
-		ReadTimeout:       5 * time.Second,
-		WriteTimeout:      10 * time.Second,
+		ReadTimeout:       1 * time.Minute,
+		WriteTimeout:      1 * time.Minute,
 		IdleTimeout:       120 * time.Second,
 		ReadHeaderTimeout: 5 * time.Second,
 		MaxHeaderBytes:    1 << 20,
